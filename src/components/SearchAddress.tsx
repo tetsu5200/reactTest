@@ -1,9 +1,15 @@
 import * as React from "react";
-import {Button,TextField} from "@material-ui/core"
+import {Button,TextField,Card,CardHeader} from "@material-ui/core"
 
 interface State {
 	postCode: string;
 	address: string;
+}
+
+const styles = {
+    line :{
+        padding : '20px'
+    }
 }
 
 class SearchAddress extends React.Component<{},State>{
@@ -36,19 +42,21 @@ class SearchAddress extends React.Component<{},State>{
               (error) => {
                   console.log(error)
               })
-        }
-        
+        }     
 
     render(){
         return(
             <div style={{padding:'30px'}}>
-                <div>
-                    <TextField value={this.state.postCode} onChange={e => this.changePostCode(e)}/>
-                    <Button onClick={this.searchAddress.bind(this)}>郵便番号から検索</Button>
-                </div>
-                <div>
-                    <TextField value={this.state.address}></TextField>
-                </div>
+                <Card style={{ margin: 'auto', width: '80vw' }}>
+                    <CardHeader title='住所検索' />
+                    <div style={styles.line}>
+                        <TextField value={this.state.postCode} onChange={e => this.changePostCode(e)}/>
+                        <Button onClick={this.searchAddress.bind(this)}>郵便番号から検索</Button>
+                    </div>
+                    <div style={styles.line}>
+                        <TextField value={this.state.address}></TextField>
+                    </div>
+                </Card>
             </div>
         )
     }
