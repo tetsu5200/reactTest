@@ -34,10 +34,14 @@ class SearchAddress extends React.Component<{},State>{
             .then(res => res.json())
             .then(
               (result) => {
-                  var address = result.data.fullAddress
-                  this.setState({
-                      address:address
-                });
+                if(result.code === 200){
+                    var address = result.data.fullAddress
+                    this.setState({
+                        address:address
+                    })
+                }else{
+                    alert('郵便番号が正しくありません')
+                }
               },
               (error) => {
                   console.log(error)
