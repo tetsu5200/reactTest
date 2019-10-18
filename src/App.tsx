@@ -8,11 +8,9 @@ import SearchAddress from './components/SearchAddress'
 
 // App Component を定義
 const App: React.FC = () => (
-  <div>
-    <Switch>
+  <div>  
       <Route exact path="/" component={Login} />
       <Route exact path="/SearchAddress" component={SearchAddress} />
-    </Switch>
   </div>
 );
 
